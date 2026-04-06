@@ -31,7 +31,7 @@ A modern, responsive calculator built with HTML, CSS & JavaScript, designed to f
 
 ## 🔗 Live Demo
 
- [Click here to view the app]()
+ [Click here to view the app]( https://ceecee-ferdy.github.io/calculator-app/)
 
 ---
 
