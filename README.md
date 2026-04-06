@@ -1,2 +1,67 @@
-# calculator-app
-Responsive calculator app with formatted input, percentages and scientific notation
+# Calculator App
+
+A modern, responsive calculator built with HTML, CSS & JavaScript, designed to feel like a real-world calculator. Supports basic arithmetic, decimals, percentages, and large-number formatting with commas.
+
+---
+
+## 🚀 Features
+
+* ✅ Fully responsive layout for desktop, tablet & mobile.
+* Real-time comma formatting while typing numbers.
+* Large numbers display in scientific notation (e.g., 1.23e+12).
+* Supports keyboard input for all numbers and operators.
+* Clear (AC), delete (←), decimal, and percent functionality.
+* Smooth hover and click effects on buttons.
+
+---
+
+## 🛠️ Built With
+
+* HTML – structure of the calculator.
+* CSS – responsive layout, hover effects, and styling.
+* JavaScript (Vanilla JS) – calculation logic and dynamic formatting.
+
+---
+
+## 📸 Preview
+
+### Light Mode
+![Preview](Images/Screenshots/preview.png)
+
+### Dark Mode
+![Dark Mode](Images/Screenshots/dark-mode.png)
+
+### Editing
+![Editing](Images/Screenshots/edit-mode.png)
+
+### Empty State
+![Empty](Images/Screenshots/empty-state.png)
+
+---
+
+## 💡 What I Learned
+
+* DOM manipulation
+* Event handling
+* State management
+* UI/UX improvements
+* Local storage usage
+
+---
+
+## 🔗 Live Demo
+
+ [Click here to view the app](https://ceecee-ferdy.github.io/todo-app/)
+
+---
+
+## 📂 How to Run
+
+1. Clone the repository
+2. Open `index.html` in your browser
+
+---
+
+## 🙌 Acknowledgment
+
+This project was built as part of my journey to becoming a frontend developer.

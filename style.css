@@ -1,0 +1,107 @@
+
+ body {
+  margin: 0;
+  height: 100vh;
+  background-color: rgb(28, 28, 28);
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  height: 100vh;
+  max-width: 400px; /* 👈 controls overall size */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+ 
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.display-values {
+  font-size: 2em;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;          /* 👈 prevents overflow */
+  word-break: break-all;     /* 👈 breaks long numbers properly */
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 10px;
+  color: white;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 👈 THIS keeps it perfectly square */
+  border-radius: 50%; /* 👈 makes it circle */
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: rgb(212, 212, 210);
+  color: rgb(28, 28, 28);
+  transition: transform 0.2s;
+  
+}
+
+.clear-button:hover, .delete-button:hover, .percent-button:hover, .operator-button:hover, .equal-button:hover, .number-button:hover, .decimal-button:hover, .zero-button:hover  {
+  transform: scale(1.1)
+}
+
+.delete-button {
+  background-color: rgb(212, 212, 210);
+  color: #1c1c1c;
+  transition: transform 0.2s;
+}
+
+.clear-image {
+  height: 20px;
+  
+
+}
+
+.percent-button {
+ background-color: rgb(212, 212, 210);
+ color: rgb(28, 28, 28);
+}
+
+
+
+.operator-button, .equal-button {
+ background-color: rgb(255, 149, 0);
+ color: rgb(212, 212, 210);
+}
+
+.divide-image {
+  color: rgb(212, 212, 210);
+}
+
+.number-button, .decimal-button {
+  background-color: rgb(80, 80, 80);
+  color: rgb(212, 212, 210);
+}
+
+
+.zero-button {
+  background-color: rgb(80, 80, 80);
+  color: rgb(212, 212, 210);
+  grid-column: span 2;
+  aspect-ratio: auto; /* 👈 allow rectangle */
+  border-radius: 30px;
+}
+
+@media(max-width: 450px) {
+  .container {
+    max-width: 100%;
+   
+  }
+}
