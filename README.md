@@ -1,6 +1,6 @@
 # Calculator App
 
-A modern, responsive calculator built with HTML, CSS & JavaScript, designed to feel like a real-world calculator. Supports basic arithmetic, decimals, percentages, and large-number formatting with commas.
+A modern, responsive calculator built with HTML, CSS & JavaScript, designed to feel like a real-world calculator. Supports basic arithmetic, decimals, percentages and large-number formatting with commas.
 
 ---
 
@@ -18,7 +18,7 @@ A modern, responsive calculator built with HTML, CSS & JavaScript, designed to f
 ## 🛠️ Built With
 
 * HTML – structure of the calculator.
-* CSS – responsive layout, hover effects, and styling.
+* CSS – responsive layout, hover effects and styling.
 * JavaScript (Vanilla JS) – calculation logic and dynamic formatting.
 
 ---
