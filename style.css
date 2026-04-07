@@ -114,35 +114,36 @@ button:active {
 /* ===== MOBILE RESPONSIVE (≤ 450px) ===== */
 @media (max-width: 450px) {
   body {
+    margin: 0;
+    padding: 0;
     overflow: hidden; /* no scroll */
+    background-color: rgb(28, 28, 28);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(28, 28, 28);
-    height: 100vh;
   }
 
   .container {
     width: 360px;       /* fixed width for mobile */
-    height: 100vh;      /* full viewport height */
+    height: 100vh;      /* full screen */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* display top, buttons bottom */
+    justify-content: flex-end; /* push everything to bottom */
     padding: 10px;
     box-sizing: border-box;
   }
 
   .display-values {
     font-size: 1.6rem;
-    flex: 0 0 auto;
-    padding: 10px;
     color: white;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-bottom: 100px;
     overflow: hidden;
     word-break: break-word;
+    padding: 10px;
+    margin-bottom: 10px; /* space above buttons */
   }
 
   .buttons {
@@ -154,7 +155,7 @@ button:active {
 
   button {
     width: 70px;       /* fixed width */
-    height: 70px;      /* fixed height for perfect circle */
+    height: 70px;      /* fixed height */
     border-radius: 50%;
     font-size: 1.3rem;
     display: flex;
