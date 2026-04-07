@@ -140,6 +140,7 @@ button:active {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    margin-bottom: 100px;
     overflow: hidden;
     word-break: break-word;
   }
