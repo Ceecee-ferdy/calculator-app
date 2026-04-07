@@ -1,24 +1,35 @@
-
 let calculation = localStorage.getItem('calculation') || '';
 
 let justCalculated = false;
 
+
+
 showDisplay();
 
-// NUMBER BUTTONS
-document.querySelectorAll('.js-number-button')
+function addNumber(value) {
+
+  let parts = calculation.split(' ');
+  let currentNumber = parts[parts.length - 1];
+
+  // 🚫 limit ONLY the current number
+  if (currentNumber.length > 15) return;
+
+  if (justCalculated) {
+    calculation = value;
+    justCalculated = false;
+  } else {
+    calculation += value;
+  }
+
+  showDisplay();
+  saveCalculation();
+}
+
+
+  document.querySelectorAll('.js-number-button')
   .forEach((button) => {
     button.addEventListener('click', () => {
-      const value = button.innerText;
-
-      if (justCalculated) {
-        calculation = value;
-        justCalculated = false;
-      } else {
-        calculation += value;
-      }
-      showDisplay();
-      saveCalculation();
+      addNumber(button.innerText);
     });
   });
 
@@ -51,10 +62,10 @@ document.querySelectorAll('.js-operator-button')
       if (['+', '-', '*', '/'].includes(lastChar)) {
         calculation = calculation.slice(0, -1) + value;
       } else {
-        calculation += ' ' + value;
+        calculation += ' ' + value + ' ';
       }
 
-      calculation += ' ';
+      
       justCalculated = false;
 
       showDisplay();
@@ -138,17 +149,23 @@ document.querySelector('.js-percent-button')
 
 // KEYBOARD SUPPORT
 document.addEventListener('keydown', (event) => {
-  event.preventDefault();
-  const key = event.key;
+  if (event.repeat) return;
 
+  const key = event.key;
+/*
   if (key >= '0' && key <= '9') {
+     if (calculation.length > 20) return;
     if (justCalculated) {
       calculation = key;
       justCalculated = false;
     } else {
       calculation += key;
 }
-     }
+     }  */
+
+  if (key >= '0' && key <= '9') {
+  addNumber(key);
+ }
 
   else if (['+', '-', '*', '/'].includes(key)) {
     calculation = calculation.replace(/,/g, '').trim();
@@ -178,7 +195,11 @@ document.addEventListener('keydown', (event) => {
     calculation = calculation.slice(0, -1);
   }
 
+  
+
   else if (key === 'Enter' || key === '=') {
+    event.preventDefault();
+
     document.querySelector('.js-equal-button').click();
     return;
   }
@@ -192,53 +213,22 @@ function saveCalculation() {
   localStorage.setItem('calculation', calculation);
 }
 
-// DISPLAY
-/*
-function showDisplay() {
-  let display = calculation;
-  let clean = display.replace(/,/g, '');
 
-  if (!isNaN(clean) && clean !== '') {
-    let num = Number(clean);
-
-    if (clean.length > 10) {
-      display = num.toPrecision(8);
-    } else {
-      display = num.toLocaleString();
-    }
-  }
-
-  document.querySelector('.js-display-values')
-    .innerHTML = display || 0;
-} */
  function showDisplay() {
   let display = '';
+  let parts = calculation.trim().split(' ');
 
-  // 🔥 STEP 1: split numbers and operators
-  let currentNumber = '';
+  for (let i = 0; i < parts.length; i++) {
+    let part = parts[i];
 
-  for (let i = 0; i < calculation.length; i++) {
-    let char = calculation[i];
-
-    if ('0123456789.'.includes(char)) {
-      currentNumber += char;
-    } else {
-      // format number before adding operator
-      if (currentNumber !== '') {
-        display += formatNumber(currentNumber);
-        currentNumber = '';
-      }
-
-      display += ' ' + char + ' ';
+    if (['+', '-', '*', '/'].includes(part)) {
+      display += ' ' + part + ' ';
+    } else if (part !== '') {
+      display += formatNumber(part);
     }
   }
 
-  // last number
-  if (currentNumber !== '') {
-    display += formatNumber(currentNumber);
-  }
-
-  // 🔥 STEP 2: ONLY after "=" (your original logic)
+  // ✅ AFTER "=" (safe to use Number)
   if (justCalculated) {
     let clean = calculation.replace(/,/g, '');
 
@@ -254,13 +244,14 @@ function showDisplay() {
   }
 
   document.querySelector('.js-display-values')
-    .innerHTML = display || 0;
+    .innerHTML = display === '' ? '0' : display;
 }
 
 function formatNumber(numStr) {
   let [integer, decimal] = numStr.split('.');
 
-  integer = Number(integer).toLocaleString();
+  // ✅ format as STRING (no Number conversion)
+  integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return decimal ? `${integer}.${decimal}` : integer;
 }
