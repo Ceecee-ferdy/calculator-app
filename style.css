@@ -1,9 +1,10 @@
-
- body {
+body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
   background-color: rgb(28, 28, 28);
   font-family: 'Poppins', sans-serif;
+  touch-action: manipulation;
 }
 
 .container {
@@ -14,11 +15,12 @@
   flex-direction: column;
  
   padding: 15px;
- 
+  box-sizing: border-box;
 }
 
 .display-values {
-  font-size: 2em;
+  font-size: 2rem;
+  font-weight: 600;
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;          /* 👈 prevents overflow */
@@ -27,14 +29,16 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  padding: 10px;
+  padding-right: 10px;
   color: white;
+  padding: 10px;
 }
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  
 }
 
 button {
@@ -44,6 +48,13 @@ button {
   font-size: 1.5rem;
   border: none;
   cursor: pointer;
+  
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: scale(0.95);
 }
 
 .clear-button {
